@@ -257,4 +257,8 @@
       DELETE_STATUS = #{deleteStatus,jdbcType=VARCHAR}
     where IDS = #{ids,jdbcType=VARCHAR}
   </update>
+  
+  <select id="list" resultMap="BaseResultMap">  
+        select * from cms_activity  
+    </select>  
 </mapper>
