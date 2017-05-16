@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HelloController {
 		@RequestMapping("/hello")
 	    public String hello(Map<String,Object> map){
-	       map.put("name", "[Angel -- 守护天使]");
+	       map.put("name", "[Angel -- 守护天使2015]");
 	       System.out.println("-----------");
 	       
 	       return "hello";
