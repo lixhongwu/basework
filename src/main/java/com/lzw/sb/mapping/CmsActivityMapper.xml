@@ -41,7 +41,7 @@
     delete from cms_activity
     where IDS = #{ids,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="lcom.lzw.sb.model.CmsActivity" >
+  <insert id="insert" parameterType="com.lzw.sb.model.CmsActivity" >
     insert into cms_activity (IDS, TITLE, STARTTIME, 
       ENDTIME, URL, ORDERS, 
       STATUS, PICURL, PICNAME, 
