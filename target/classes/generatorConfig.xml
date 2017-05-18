@@ -13,25 +13,28 @@
              <property name="suppressAllComments" value="true"/>
          </commentGenerator>
          <!--数据库链接地址账号密码-->
-         <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/xhmall" userId="root" password="123456">
+         <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/basework" userId="root" password="123456">
          </jdbcConnection>
          <javaTypeResolver>
              <property name="forceBigDecimals" value="false"/>
          </javaTypeResolver>
          <!--生成Model类存放位置-->
-         <javaModelGenerator targetPackage="lzw.model" targetProject="src">
+         <javaModelGenerator targetPackage="com.lzw.sb.model" targetProject="src/main/java">
              <property name="enableSubPackages" value="true"/>
              <property name="trimStrings" value="true"/>
          </javaModelGenerator>
          <!--生成映射文件存放位置-->
-         <sqlMapGenerator targetPackage="lzw.mapping" targetProject="src">
+         <sqlMapGenerator targetPackage="com.lzw.sb.mapping" targetProject="src/main/java">
              <property name="enableSubPackages" value="true"/>
          </sqlMapGenerator>
          <!--生成Dao类存放位置-->
-         <javaClientGenerator type="XMLMAPPER" targetPackage="lzw.dao" targetProject="src">
+         <javaClientGenerator type="XMLMAPPER" targetPackage="com.lzw.sb.dao" targetProject="src/main/java">
              <property name="enableSubPackages" value="true"/>
          </javaClientGenerator>
          <!--生成对应表及类名-->
-         <table tableName="cms_activity" domainObjectName="CmsActivity" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+         <table tableName="t_user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+          <table tableName="t_role" domainObjectName="Role" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+           <table tableName="t_permission" domainObjectName="Permission" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+            <table tableName="t_user_role" domainObjectName="UserRole" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
      </context>
  </generatorConfiguration>

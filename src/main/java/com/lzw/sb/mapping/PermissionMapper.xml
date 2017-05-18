@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzw.sb.dao.PermissionMapper">
+  <resultMap id="BaseResultMap" type="com.lzw.sb.model.Permission">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="permissionname" jdbcType="VARCHAR" property="permissionname" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.lzw.sb.model.Permission">
+    insert into t_permission (id, permissionname, role_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{permissionname,jdbcType=VARCHAR}, #{roleId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lzw.sb.model.Permission">
+    insert into t_permission
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="permissionname != null">
+        permissionname,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="permissionname != null">
+        #{permissionname,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  
+  
+</mapper>
