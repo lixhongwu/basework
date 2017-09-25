@@ -1,9 +1,12 @@
 package com.lzw.sb.model;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
-public class User {
+import com.baomidou.mybatisplus.annotations.TableName;
+@TableName("t_user")
+public class User implements Serializable {
     private Integer id;
 
     private String username;
@@ -34,13 +37,4 @@ public class User {
         this.password = password == null ? null : password.trim();
     }
 
-	public Set<String> getRolesName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public List<Role> getRoleList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

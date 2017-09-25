@@ -17,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.lzw.sb.dao.RoleMapper;
 import com.lzw.sb.dao.UserMapper;
 import com.lzw.sb.model.Role;
 import com.lzw.sb.model.User;
@@ -34,7 +35,8 @@ public class MyShiroRealm extends AuthorizingRealm{
 
 	    @Autowired
 	    private UserMapper userDao; 
-
+	    @Autowired
+	    private RoleMapper roleDao; 
 	    /**
 	     * 权限认证，为当前登录的Subject授予角色和权限 
 	     * @see 经测试：本例中该方法的调用时机为需授权资源被访问时 
@@ -52,11 +54,11 @@ public class MyShiroRealm extends AuthorizingRealm{
 	            //权限信息对象info,用来存放查出的用户的所有的角色（role）及权限（permission）
 	            SimpleAuthorizationInfo info=new SimpleAuthorizationInfo();
 	            //用户的角色集合
-	            info.setRoles(user.getRolesName());
+	            info.setRoles(userDao.getRolesName(user));
 	            //用户的角色对应的所有权限，如果只使用角色定义访问权限，下面的四行可以不要
-	            List<Role> roleList=user.getRoleList();
+	            List<Role> roleList=userDao.getRoleList(user);
 	            for (Role role : roleList) {
-	                info.addStringPermissions(role.getPermissionsName());
+	                info.addStringPermissions(roleDao.getPermissionsName(role));
 	            }
 	            
 	            // 或者按下面这样添加

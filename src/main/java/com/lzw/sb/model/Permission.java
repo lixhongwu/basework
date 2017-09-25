@@ -1,6 +1,8 @@
 package com.lzw.sb.model;
 
-public class Permission {
+import java.io.Serializable;
+
+public class Permission implements Serializable {
     private Integer id;
 
     private String permissionname;

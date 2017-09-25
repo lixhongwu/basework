@@ -9,64 +9,31 @@
   <sql id="Base_Column_List">
     id, username, password
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="getRolesName" parameterType="com.lzw.sb.model.User" resultType="java.util.HashMap">
+    SELECT r.rolename FROM t_role r LEFT JOIN t_user_role ur on r.id=ur.role_id LEFT JOIN t_user u on ur.user_id=u.id
+    where 1=1
+    <if test="username != null">
+        and u.id = #{id,jdbcType=INTEGER}
+      </if>
+  </select>
+  <select id="getRoleList" parameterType="com.lzw.sb.model.User" resultType="com.lzw.sb.model.Role">
+    select r.* from t_role  r LEFT JOIN t_user_role u on r.id=u.role_id 
+    where 1=1
+    <if test="username != null">
+        and u.id = #{id,jdbcType=INTEGER}
+      </if>
+      
+  </select>
+   <select id="findByName" parameterType="com.lzw.sb.model.User" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from t_user
-    where id = #{id,jdbcType=INTEGER}
+    where username = #{username,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from t_user
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.lzw.sb.model.User">
-    insert into t_user (id, username, password
-      )
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.lzw.sb.model.User">
-    insert into t_user
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="username != null">
-        username,
-      </if>
-      <if test="password != null">
-        password,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="username != null">
-        #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lzw.sb.model.User">
-    update t_user
-    <set>
-      <if test="username != null">
-        username = #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null">
-        password = #{password,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.lzw.sb.model.User">
-    update t_user
-    set username = #{username,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  
+ 
+    <select id="selectUserList" parameterType="com.lzw.sb.model.User" resultType="com.lzw.sb.model.Role">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+  </select>
 </mapper>

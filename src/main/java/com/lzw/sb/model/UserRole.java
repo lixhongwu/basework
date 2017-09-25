@@ -1,6 +1,8 @@
 package com.lzw.sb.model;
 
-public class UserRole {
+import java.io.Serializable;
+
+public class UserRole  implements Serializable {
     private Integer userId;
 
     private Integer roleId;

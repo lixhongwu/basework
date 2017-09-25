@@ -1,8 +1,9 @@
 package com.lzw.sb.model;
 
+import java.io.Serializable;
 import java.util.Collection;
 
-public class Role {
+public class Role implements Serializable {
     private Integer id;
 
     private String rolename;
@@ -23,8 +24,4 @@ public class Role {
         this.rolename = rolename == null ? null : rolename.trim();
     }
 
-	public Collection<String> getPermissionsName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

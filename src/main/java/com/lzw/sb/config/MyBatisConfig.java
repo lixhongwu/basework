@@ -19,8 +19,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
 
 import com.github.pagehelper.PageHelper;
-@Configuration  
-@EnableTransactionManagement  
+//@Configuration  
+//@EnableTransactionManagement  
 public class MyBatisConfig implements TransactionManagementConfigurer {
 
 	@Autowired

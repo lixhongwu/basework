@@ -5,6 +5,14 @@
     <result column="id" jdbcType="INTEGER" property="id" />
     <result column="rolename" jdbcType="VARCHAR" property="rolename" />
   </resultMap>
+  <select id="getPermissionsName" parameterType="com.lzw.sb.model.Role" resultType="String">
+    select p.permissionname from t_permission p LEFT JOIN t_role r on p.role_id=r.id 
+    where 1=1
+    <if test="username != null">
+        and r.id = #{id,jdbcType=INTEGER}
+      </if>
+      
+  </select>
   <insert id="insert" parameterType="com.lzw.sb.model.Role">
     insert into t_role (id, rolename)
     values (#{id,jdbcType=INTEGER}, #{rolename,jdbcType=VARCHAR})

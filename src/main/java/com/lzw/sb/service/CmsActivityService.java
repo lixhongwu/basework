@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
+
 @Component
 public class CmsActivityService {
+	public void intt(){
+		System.out.println(23423);
+	}
 //	@Autowired
 //	CmsActivityMapper cmsActivityMapper;
 //	public CmsActivity getCmsActivity(String ids){

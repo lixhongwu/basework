@@ -1,8 +1,9 @@
 package com.lzw.sb.model;
 
 import java.beans.Transient;
+import java.io.Serializable;
 
-public class BaseModel {
+public class BaseModel implements Serializable {
 
     private Integer page = 1;
 

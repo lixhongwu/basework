@@ -39,8 +39,12 @@ public class MShiroFilterFactoryBean extends ShiroFilterFactoryBean  {
         ignoreExt.add(".bmp");
         ignoreExt.add(".js");
         ignoreExt.add(".css");
+        ignoreExt.add(".ico");
+        ignoreExt.add(".woff");
     }
-
+    /**  
+     * 启动时加载  
+     */  
     @Override
     protected AbstractShiroFilter createInstance() throws Exception {
 
@@ -62,7 +66,9 @@ public class MShiroFilterFactoryBean extends ShiroFilterFactoryBean  {
 
         return new MSpringShiroFilter((WebSecurityManager) securityManager, chainResolver);
     }
-
+    /**  
+     * 启动时加载  
+     */  
     private final class MSpringShiroFilter extends AbstractShiroFilter {
 
         protected MSpringShiroFilter(WebSecurityManager webSecurityManager, FilterChainResolver resolver) {
@@ -75,7 +81,9 @@ public class MShiroFilterFactoryBean extends ShiroFilterFactoryBean  {
                 setFilterChainResolver(resolver);
             }
         }
-
+        /**  
+         * 页面上传输的url先进入此方法验证  
+         */  
         @Override
         protected void doFilterInternal(ServletRequest servletRequest, ServletResponse servletResponse,
                 FilterChain chain) throws ServletException, IOException {
@@ -86,7 +94,7 @@ public class MShiroFilterFactoryBean extends ShiroFilterFactoryBean  {
             // 当然如果你的集群系统使用了动静分离处理，静态资料的请求不会到Filter这个层面，便可以忽略。
             boolean flag = true;
             int idx = 0;
-            if(( idx = str.indexOf(".")) > 0){
+            if(( idx = str.lastIndexOf(".")) > 0){
                 str = str.substring(idx);
                 if(ignoreExt.contains(str.toLowerCase()))
                     flag = false;
